@@ -1,18 +1,52 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home';
-import { LoginComponent } from './login/login';
-import { RegisterComponent } from './register/register';
-import { SolicitudCertificadoComponent } from './solicitud-certificado/solicitud-certificado';
-import { PagoComponent } from './pago/pago';
-import { VerificacionCertificadoComponent } from './verificacion-certificado/verificacion-certificado';
-import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-export const PUBLIC_ROUTES: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'solicitud-certificado', component: SolicitudCertificadoComponent },
-  { path: 'pago/:id', component: PagoComponent },
-  { path: 'verificar', component: VerificacionCertificadoComponent },
-  { path: 'mis-solicitudes', component: MisSolicitudesComponent }
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        loadComponent: () => import('./home/home').then(m => m.HomeComponent)
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./login/login').then(m => m.LoginComponent)
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./register/register').then(m => m.RegisterComponent)
+      },
+      {
+        path: 'solicitud-certificado',
+        loadComponent: () => import('./solicitud-certificado/solicitud-certificado')
+          .then(m => m.SolicitudCertificadoComponent)
+      },
+      {
+        path: 'pago',
+        loadComponent: () => import('./pago/pago').then(m => m.PagoComponent)
+      },
+      {
+        path: 'mis-solicitudes',
+        loadComponent: () => import('./mis-solicitudes/mis-solicitudes')
+          .then(m => m.MisSolicitudesComponent)
+      },
+      {
+        path: 'verificacion-certificado',
+        loadComponent: () => import('./verificacion-certificado/verificacion-certificado')
+          .then(m => m.VerificacionCertificadoComponent)
+      }
+    ]
+  }
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PublicRoutingModule { }

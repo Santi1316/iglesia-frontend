@@ -5,16 +5,14 @@ import { adminGuard } from './core/guards/admin.guard';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./features/public/public-routing.module')
-        .then(m => m.PUBLIC_ROUTES)
+    loadChildren: () => import('./features/public/public-routing.module')
+      .then(m => m.PublicRoutingModule)
   },
   {
     path: 'admin',
-    canActivate: [authGuard, adminGuard],
-    loadChildren: () =>
-      import('./features/admin/admin-routing')
-        .then(m => m.ADMIN_ROUTES)
+    canActivate: [adminGuard],
+    loadChildren: () => import('./features/admin/admin-routing.module')
+      .then(m => m.AdminRoutingModule)
   },
   {
     path: '**',
