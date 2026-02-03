@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
   standalone: true,
+  imports: [CommonModule],
   template: `
     <h2>Actas</h2>
     <ul>

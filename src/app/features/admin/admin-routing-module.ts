@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard';
 import { ListaActasComponent } from './actas/lista-actas/lista-actas';
 import { ListaSolicitudesComponent } from './solicitudes/lista-solicitudes/lista-solicitudes';
@@ -15,3 +16,9 @@ export const ADMIN_ROUTES: Routes = [
   { path: 'usuarios', component: ListaUsuariosComponent },
   { path: 'certificados', component: ListaCertificadosComponent }
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(ADMIN_ROUTES)],
+  exports: [RouterModule]
+})
+export class AdminRoutingModule { }

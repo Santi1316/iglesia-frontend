@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  template: `
-    <h2>Pagos</h2>
-    <ul>
-      <li *ngFor="let p of pagos">
-        {{ p.id }} - {{ p.monto }} - {{ p.estado }}
-      </li>
-    </ul>
-  `
+  imports: [CommonModule],
+  template: `...`
 })
 export class ListaPagosComponent implements OnInit {
   pagos: any[] = [];

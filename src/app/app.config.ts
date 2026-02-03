@@ -2,8 +2,8 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideStore } from '@angular/core';
-import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';  // ← Ya lo corregiste
+import { provideEffects } from '@ngrx/effects';  // ← AGREGAR ESTA LÍNEA
 import { provideToastr } from 'ngx-toastr';
 
 import { routes } from './app.routes';

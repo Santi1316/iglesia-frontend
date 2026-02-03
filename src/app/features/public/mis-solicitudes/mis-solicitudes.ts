@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  template: `
-    <h2>Mis Solicitudes</h2>
-    <ul>
-      <li *ngFor="let s of solicitudes">
-        {{ s.tipo }} - {{ s.estado }}
-      </li>
-    </ul>
-  `
+  imports: [CommonModule],
+  template: `...`
 })
 export class MisSolicitudesComponent implements OnInit {
   solicitudes: any[] = [];
